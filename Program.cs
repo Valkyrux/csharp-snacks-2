@@ -93,6 +93,14 @@ for (int i = 0; i < listaLunghezze.Count; i++)
 }
 
 Dictionary<string, int> dizionario = new Dictionary<string, int>() { { "uno", 1 }, { "due", 2 }, { "tre", 3 }, { "quattro", 4 }, { "cinque", 5 }, { "sei", 6 } };
+Dictionary<int, string> dizionario1 = new Dictionary<int, string>() { { 1, "uno" }, { 2, "due" }, { 3, "tre" }, { 4, "quattro" }, { 5, "cinque" }, { 6, "sei" } };
+
+string NumberSumString(string str1, string str2)
+{
+    int num1 = dizionario[str1];
+    int num2 = dizionario[str2];
+    return dizionario1[num1 + num2];
+}
 
 List<string> listString = new List<string>() { "tre", "due", "uno", "Cinque", "cinque", "Tre" };
 Console.WriteLine("\n___LISTA STRINGHE INIZIALE___");
@@ -175,3 +183,6 @@ foreach (var tuple in ListaFinale)
 {
     Console.WriteLine("{0} - {1}/{2}/{3}", tuple.Item2, tuple.Item1.Day, tuple.Item1.Month, tuple.Item1.Year);
 }
+
+Console.WriteLine("\n___SOMMA DI NUMERI A PAROLE___");
+Console.WriteLine("{0} piu' {1} fa {2}", "due", "uno", NumberSumString("due","uno"));
