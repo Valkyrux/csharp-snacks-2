@@ -1,4 +1,5 @@
-﻿List<int> listInt = new List<int>() {1, 2, 3, 4, 5, 6, 7};
+﻿double time = getMicrosecondi();
+List<int> listInt = new List<int>() {1, 2, 3, 4, 5, 6, 7};
 
 var mettiAlQuadrato1 = () => { int tot = 0;  return ((int i) => { tot += i; return tot; }); };
 var ciao = mettiAlQuadrato1();
@@ -157,10 +158,7 @@ for (int i = 0; i<10; i++)
 }
 
 Console.WriteLine("\n___TUPLE GENERATE___");
-foreach (var tuple in ListaFinale)
-{
-    Console.WriteLine("{0} - {1}/{2}/{3}", tuple.Item2, tuple.Item1.Day, tuple.Item1.Month, tuple.Item1.Year);
-}
+ListaFinale.ForEach((tuple) => { Console.WriteLine("{0} : {1}/{2}/{3}", tuple.Item2, tuple.Item1.Day, tuple.Item1.Month, tuple.Item1.Year); });
 
 ListaFinale.Sort((t1, t2) =>
 {
@@ -179,10 +177,15 @@ ListaFinale.Sort((t1, t2) =>
 });
 
 Console.WriteLine("\n___TUPLE ORDINATE PER DATA___");
-foreach (var tuple in ListaFinale)
-{
-    Console.WriteLine("{0} - {1}/{2}/{3}", tuple.Item2, tuple.Item1.Day, tuple.Item1.Month, tuple.Item1.Year);
-}
+ListaFinale.ForEach((tuple) => { Console.WriteLine("{0} : {1}/{2}/{3}", tuple.Item2, tuple.Item1.Day, tuple.Item1.Month, tuple.Item1.Year); });
+
 
 Console.WriteLine("\n___SOMMA DI NUMERI A PAROLE___");
 Console.WriteLine("{0} piu' {1} fa {2}", "due", "uno", NumberSumString("due","uno"));
+
+Console.WriteLine(getMicrosecondi() - time);
+
+double getMicrosecondi()
+{
+    return DateTime.Now.Ticks / (TimeSpan.TicksPerMillisecond / 1000);
+}
